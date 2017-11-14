@@ -45,14 +45,14 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode scd)
+plugins=(adb colored-man-pages git history-substring-search vi-mode scd zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #DEFAULT_USER=qasimj
 
-export PATH="/google/data/ro/projects/wingman:/google/src/head/depot/google3/googlex/glass:/google/src/head/depot/google3/googlex/glass/flasher:/google/src/head/depot/google3/googlex/glass/tools:/usr/lib/jvm/java-6-sun/bin:/usr/local/google/home/qasimj/glass/android/out/host/linux-x86/bin:/usr/local/google/home/qasimj/glass/bin:/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin":$PATH
+#export PATH="/google/data/ro/projects/wingman:/google/src/head/depot/google3/googlex/glass:/google/src/head/depot/google3/googlex/glass/flasher:/google/src/head/depot/google3/googlex/glass/tools:/usr/lib/jvm/java-6-sun/bin:/usr/local/google/home/qasimj/glass/android/out/host/linux-x86/bin:/usr/local/google/home/qasimj/glass/bin:/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin":$PATH
 # export PATH="/usr/local/google/home/qasimj/glass/bin:/usr/lib/jvm/java-6-sun/bin:/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin":$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -99,11 +99,31 @@ function adb() {
 }
 
 # Add the internal Android SDK to your PATH
-export SDK_LOC=/google/data/ro/teams/as-with-blaze/android-sdk-linux
+#export SDK_LOC=/google/data/ro/teams/as-with-blaze/android-sdk-linux
+export SDK_LOC=/usr/local/google/home/qasimj/Android/Sdk
 export PATH=${PATH}:${SDK_LOC}/tools:${SDK_LOC}/platform-tools
 
 plugins+=(zsh-completions)
-autoload -U compinit && compinit
 export PATH=${PATH}:${HOME}/github/pidcat
 
 . /usr/local/google/home/$USER/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
+source /etc/bash_completion.d/g4d
+source /google/data/ro/teams/mobile_eng_prod/crow/crow-complete.bash
+
+alias tensorflow="source ~/env/tensorflow/bin/activate"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+if [[ $TERM == xterm ]]; then TERM=xterm-256color; fi
+
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+autoload -U compinit && compinit
+
+alias adbAll='/google/src/files/head/depot/google3/experimental/users/xlythe/scripts/ParallelAdb.sh'
+alias install='/google/src/files/head/depot/google3/experimental/users/xlythe/scripts/NearbyApp.sh'
+alias gmsInstall='/google/src/files/head/depot/google3/experimental/users/xlythe/scripts/GMSCore.sh'
+alias enableLogs='/google/src/files/head/depot/google3/experimental/users/xlythe/scripts/NearbyLogs.sh'
+
+export GOMA_DIR=$HOME/goma
+export USE_GOMA=true

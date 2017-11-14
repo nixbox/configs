@@ -130,3 +130,7 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/local/google/home/$USER/.vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
+
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+export GOMA_DIR=$HOME/goma
+export USE_GOMA=true

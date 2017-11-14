@@ -9,13 +9,14 @@ Plugin 'gmarik/vundle'
 
 " External plugins
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'epeli/slimux'
+Plugin 'morhetz/gruvbox'
 
 " Slimux
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -35,12 +36,14 @@ let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
+set term=screen-256color
 set termencoding=utf-8
 set laststatus=2
-
 set background=dark
-"set t_Co=16
+set number
+set nuw=6
+colorscheme gruvbox
+
 syntax on
 
 " Google Vim settings and plugins
@@ -87,3 +90,5 @@ inoremap <C-K> <C-O>:pyf /usr/lib/clang-format/clang-format.py<CR>
 
 " Enable all plugins, should be the last line.
 filetype plugin indent on	" required!
+
+set tabstop=2 shiftwidth=2 expandtab
